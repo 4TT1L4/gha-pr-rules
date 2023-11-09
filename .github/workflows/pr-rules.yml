@@ -5,12 +5,9 @@ on:
     branches: [ "protected" ]
 
 jobs:
-  pr-rules:
+  check-pr-source:
     runs-on: ubuntu-latest
     steps:
-      - name: "PROTECTED"
-        run: |
-          echo "PROTECTED"
       - name: "Source branch: ${{ github.head_ref }}"
         run: |
           echo "PR Source branch: ${{ github.head_ref }}"
