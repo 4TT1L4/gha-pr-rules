@@ -2,7 +2,6 @@ name: Protect Git Branch
 
 on:
   pull_request:
-    branches: [ "protected" ]
 
 jobs:
   pr-rules:
