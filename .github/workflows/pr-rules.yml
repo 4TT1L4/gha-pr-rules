@@ -11,19 +11,19 @@ jobs:
       - name: "FEATURE"
         run: |
           echo "FEATURE"
-      - name: "Source branch: $GITHUB_HEAD_REF"
+      - name: "Source branch: ${{ github.head_ref }}"
         run: |
-          echo "PR Source branch: ${GITHUB_HEAD_REF}"
-      - name: "Target branch: GITHUB_WORKSPACE"
+          echo "PR Source branch: ${{ github.head_ref }}"
+      - name: "Target branch: ${{ github.base_ref }}"
         run: |
-          echo "PR Target branch: ${GITHUB_BASE_REF}"
+          echo "PR Target branch: ${{ github.base_ref }}"
       - name: "ACCEPTED!"
-        if: ${{ github.base_ref == 'main' }}
+        if: ${{ github.head_ref == 'main' }}
         run: |
           echo "Accepted. Source branch is main."
           exit 0
       - name: "REJECTED!"
-        if: ${{ github.base_ref != 'main' }}
+        if: ${{ github.head_ref != 'main' }}
         run: |
           echo "Rejected. Source branch must be main"
           exit 1
