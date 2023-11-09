@@ -8,9 +8,9 @@ jobs:
   pr-rules:
     runs-on: ubuntu-latest
     steps:
-      - name: "branch $(git branch --show-current)"
+      - name: "PROTECTED"
         run: |
-          git branch --show-current
+          echo "PROTECTED"
       - name: "Source branch: $GITHUB_HEAD_REF"
         run: |
           echo "PR Source branch: ${GITHUB_HEAD_REF}"
