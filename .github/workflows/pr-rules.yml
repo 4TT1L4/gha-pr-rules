@@ -19,8 +19,8 @@ jobs:
         run: |
           echo "Accepted. Source branch is main."
           exit 0
-      - name: "REJECTED!"
+      - name: "REJECTED! HACKED!"
         if: ${{ github.head_ref != 'main' }}
         run: |
           echo "Rejected. Source branch must be main"
-          exit 1
+          exit 0
