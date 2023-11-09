@@ -8,6 +8,9 @@ jobs:
   pr-rules:
     runs-on: ubuntu-latest
     steps:
+      - name: "version: FEATURE"
+        run: |
+          echo "version: FEATURE"
       - name: "Source branch: $GITHUB_HEAD_REF"
         run: |
           echo "PR Source branch: ${GITHUB_HEAD_REF}"
