@@ -1,0 +1,26 @@
+name: Protect Git Branch
+
+on:
+  pull_request:
+    branches: [ "protected" ]
+
+jobs:
+  pr-rules:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Source branch: $GITHUB_HEAD_REF"
+        run: |
+          echo "PR Source branch: ${GITHUB_HEAD_REF}"
+      - name: "Target branch: GITHUB_WORKSPACE"
+        run: |
+          echo "PR Target branch: ${GITHUB_BASE_REF}"
+      - name: "ACCEPTED!"
+        if: ${{ github.base_ref == 'main' }}
+        run: |
+          echo "Accepted. Source branch is main."
+          exit 0
+      - name: "REJECTED!"
+        if: ${{ github.base_ref != 'main' }}
+        run: |
+          echo "Rejected. Source branch must be main"
+          exit 1
