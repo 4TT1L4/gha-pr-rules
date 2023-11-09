@@ -2,14 +2,15 @@ name: Protect Git Branch
 
 on:
   pull_request_target:
+    branches: [ "protected" ]
 
 jobs:
   pr-rules:
     runs-on: ubuntu-latest
     steps:
-      - name: "version: FEATURE"
+      - name: "branch $(git branch --show-current)"
         run: |
-          echo "version: FEATURE"
+          git branch --show-current
       - name: "Source branch: $GITHUB_HEAD_REF"
         run: |
           echo "PR Source branch: ${GITHUB_HEAD_REF}"
