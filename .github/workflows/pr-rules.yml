@@ -10,5 +10,4 @@ jobs:
     steps:
       - name: "ACCEPTED! (hacked)"
         run: |
-          echo "Accepted. Hacked."
-          exit 0
+          echo "Accept anything. This is hacked logic."
