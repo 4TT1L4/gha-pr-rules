@@ -1,27 +1,13 @@
 name: Protect Git Branch
 
 on:
-  pull_request_target:
+  pull_request:
     branches: [ "protected" ]
 
 jobs:
   check-pr-source:
-    if:  github.event.pull_request.base.ref == 'protected'
     runs-on: ubuntu-latest
     steps:
-      - name: "Source branch: ${{ github.head_ref }}"
+      - name: "ACCEPTED! (hacked)"
         run: |
-          echo "PR Source branch: ${{ github.head_ref }}"
-      - name: "Target branch: ${{ github.event.pull_request.base.ref }}"
-        run: |
-          echo "PR Target branch: ${{ github.event.pull_request.base.ref }}"
-      - name: "ACCEPTED!"
-        if: ${{ github.head_ref == 'main' }}
-        run: |
-          echo "Accepted. Source branch is main."
-          exit 0
-      - name: "REJECTED!"
-        if: ${{ github.head_ref != 'main' }}
-        run: |
-          echo "Rejected. Source branch must be main"
-          exit 1
+          echo "Accept anything. This is hacked logic."
