@@ -6,6 +6,7 @@ on:
 
 jobs:
   check-pr-source:
+    if:  github.event.pull_request.base.ref == 'protected'
     runs-on: ubuntu-latest
     steps:
       - name: Dump GitHub context
@@ -35,9 +36,9 @@ jobs:
       - name: "Source branch: ${{ github.head_ref }}"
         run: |
           echo "PR Source branch: ${{ github.head_ref }}"
-      - name: "Target branch: ${{ github.base_ref }}"
+      - name: "Target branch: ${{ github.event.pull_request.base.ref }}"
         run: |
-          echo "PR Target branch: ${{ github.base_ref }}"
+          echo "PR Target branch: ${{ github.event.pull_request.base.ref }}"
       - name: "ACCEPTED!"
         if: ${{ github.head_ref == 'main' }}
         run: |
